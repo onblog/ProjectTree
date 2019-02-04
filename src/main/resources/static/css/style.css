@@ -1,0 +1,50 @@
+ul.layui-nav {
+    text-align: center;
+}
+legend {
+    text-align: center;
+    font-family: fantasy;
+    font-size: 80px !important;
+    color: #009688;
+}
+
+fieldset.layui-elem-field.layui-field-title {
+    border-color: #fff;
+}
+.layui-collapse {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.layui-badge-rim,.layui-colla-content,.layui-colla-item,.layui-collapse,.layui-elem-field,.layui-form-pane .layui-form-item[pane],.layui-form-pane .layui-form-label,.layui-input,.layui-layedit,.layui-layedit-tool,.layui-quote-nm,.layui-select,.layui-tab-bar,.layui-tab-card,.layui-tab-title,.layui-tab-title .layui-this:after,.layui-textarea {
+    border-color: #fff;
+}
+i.layui-icon.layui-colla-icon {
+    color: #BDBDBD;
+}
+.layui-colla-content.layui-show {
+    padding: 0;
+}
+/**
+以下代码解决单行显示，超出忽略（若表格则自动延长）问题
+ */
+h2.layui-colla-title {
+    height: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+td {
+    height: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+th {
+    height: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+.ztree li a {
+    color: #616161 !important;
+}
