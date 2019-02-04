@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
  * Create by yster@foxmail.com 2019/1/31 0031 22:56
  */
 public class BuriedPoint {
+    //自定义线程栈：ThreadId+Stack
     private static final Map<String, Stack<MethodNode>> map = new ConcurrentHashMap<>();
     private static Logger logger = LoggerFactory.getLogger(BuriedPoint.class);
     private static ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -24,15 +25,25 @@ public class BuriedPoint {
      调用前置方法
      */
     public static void before(String methodId,String className, String methodName, String[] parameterTypes, String[] annotations, String returnType, long threadId, Date startTime, int identify,String superclass,String[] interfaces) {
-        MethodNode methodNode = new MethodNode(methodId,className, methodName, parameterTypes, annotations, returnType, threadId, startTime, identify,superclass,interfaces);
-        pushMap(methodNode);
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                MethodNode methodNode = new MethodNode(methodId,className, methodName, parameterTypes, annotations, returnType, threadId, startTime, identify,superclass,interfaces);
+                pushMap(methodNode);
+            }
+        });
     }
 
     /*
     调用后置方法
      */
     public static void after(int identify,long threadId) {
-        popMap(identify,threadId);
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                popMap(identify,threadId);
+            }
+        });
     }
 
     /**
