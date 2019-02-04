@@ -14,13 +14,13 @@
 
 项目暂时没有加入Maven中央仓库，所以还需要你clone或download到本地。
 
-在本地计算机进入项目的pom.xml文件所在目前，打开命令行（CMD）,执行install命令安装到本地。
+在本地计算机进入项目的pom.xml文件所在目录，打开命令行（CMD）,执行install命令安装到本地。
 
 ```
 mvn install
 ```
 
-## 1. Spring Boot安装插件
+## 1.1 Spring Boot安装插件
 
 如果你的项目是Spring Boot，那么使用会非常简单，只需要两步！
 
@@ -48,11 +48,11 @@ public class SpringbootApplication {
 
 注：参数2的作用是排除如Entity类等易出错且无意义的类。
 
-## 2. Spring安装插件
+## 1.2 Spring安装插件
 
 Spring和Spring Boot安装上的不同只有第一步的注解了，在Spring项目中，可以在Xml配置文件增加对`cn.yueshutong.springprojecttree`包的自动扫描即可。
 
-## 3. 访问网页
+## 1.3 访问网页
 
 启动你的项目，首先访问你项目的某个接口，使其执行被监控的方法。然后访问`localhost:8080/projecttree`查看网页。
 
@@ -63,9 +63,9 @@ Spring和Spring Boot安装上的不同只有第一步的注解了，在Spring项
 | /json/projecttree            | JSON形式的返回结果   |
 | /json/projecttree/{methodId} | 对某一方法的分析结果 |
 
-## 4. 注意事项
+## 1.4 注意事项
 
-1.使用Shiro、Spring securit等安全框架时，需要注意对此URL的权限控制。
+1.使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
 
 2.不建议同时使用 spring-boot-devtools 进行热部署。
 
