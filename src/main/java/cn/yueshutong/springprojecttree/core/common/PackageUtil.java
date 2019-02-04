@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * Create by yster@foxmail.com 2019/2/2 0002 20:43
  */
 public class PackageUtil {
-    private static final String base = PackageUtil.class.getClassLoader().getResource("").getPath();
+    private static final String base = Thread.currentThread().getContextClassLoader().getResource("").getPath();
     private static Logger logger = LoggerFactory.getLogger(PackageUtil.class);
 
     /**
@@ -29,12 +29,9 @@ public class PackageUtil {
      * @return
      */
     public static String[] scanClassName(String[] path){
-        Set<String> set = new HashSet<>();
-        for (int i = 0; i < path.length; i++) {
-            set.addAll(Arrays.stream(scanOneClass(path[i])).collect(Collectors.toSet()));
-        }
-        return set.toArray(new String[0]);
+        return scanClassNameToSet(path).toArray(new String[0]);
     }
+
     public static Set<String> scanClassNameToSet(String[] path){
         Set<String> set = new HashSet<>();
         for (int i = 0; i < path.length; i++) {
@@ -46,7 +43,8 @@ public class PackageUtil {
 
     private static String[] scanOneClass(String s) {
         if (s.endsWith("*")){
-            return scanManyClasss(s);
+            return ClassHelper.getClzFromPkg(s).toArray(new String[0]);
+//            return scanManyClasss(s);
         }
         return new String[]{s};
     }
@@ -56,14 +54,14 @@ public class PackageUtil {
         final String prefix = s.substring(0, s.length() - 1);
         String path = prefix;
         if (prefix.contains(".")){
-            path = prefix.replaceAll("\\.", "/");
+            path = prefix.replaceAll("\\.", File.separator);
         }
         // 获取此包的目录建立一个File
         File dir = new File(base + File.separator + path);
 
         // 如果不存在或者 也不是目录就直接返回
         if (!dir.exists() || !dir.isDirectory()) {
-            logger.warn("用户定义包名 " + dir.getAbsolutePath() + " 下没有任何文件");
+            logger.warn("用户定义包名 " + dir.getPath() + " 下没有任何文件");
             return null;
         }
 

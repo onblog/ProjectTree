@@ -44,6 +44,7 @@ class ByteCodeAdvice {
     private Object handle(String clazz) {
         try {
             ClassPool pool = ClassPool.getDefault();
+            pool.insertClassPath(new ClassClassPath(ByteCodeAdvice.class));
             CtClass cc = pool.get(clazz);
             //校验是否可被实例化
             if (!CodeUtil.checkout(cc)) {
