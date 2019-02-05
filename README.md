@@ -77,7 +77,7 @@ Spring和Spring Boot安装上的不同只有第一步的注解了，在Spring项
 
 1.使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
 
-2.不建议同时使用 spring-boot-devtools 进行热部署。
+2.如果同时使用 spring-boot-devtools 进行热部署,必须调用makeHaveDevtool方法，而不是make。
 
 3.出现Bug一般是一些特殊类与本框架的冲突，排除这部分类即可。
 
