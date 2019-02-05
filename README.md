@@ -20,6 +20,16 @@
 mvn install
 ```
 
+以后使用时，只需要导入依赖
+
+```
+<dependency>
+    <groupId>cn.yueshutong</groupId>
+    <artifactId>spring-project-tree</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
 ## 1.1 Spring Boot安装插件
 
 如果你的项目是Spring Boot，那么使用会非常简单，只需要两步！
