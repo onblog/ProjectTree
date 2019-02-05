@@ -28,10 +28,6 @@ public class PackageUtil {
      * @param path
      * @return
      */
-    public static String[] scanClassName(String[] path){
-        return scanClassNameToSet(path).toArray(new String[0]);
-    }
-
     public static Set<String> scanClassNameToSet(String[] path){
         Set<String> set = new HashSet<>();
         for (int i = 0; i < path.length; i++) {
@@ -50,7 +46,6 @@ public class PackageUtil {
         //如果是包
         if (s.endsWith("*")){
             return ClassHelper.getClzFromPkg(s).toArray(new String[0]);
-//            return scanManyClasss(s);
         }
         //如果是类
         return new String[]{s};

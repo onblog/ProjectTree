@@ -27,10 +27,11 @@ class ByteCodeAdvice {
      * @param exclude 要排除的类
      */
     void advice(String[] basePackage,String[] exclude) {
-        String[] baseClass = PackageUtil.scanClassName(basePackage);
+        Set<String> baseClass = PackageUtil.scanClassNameToSet(basePackage);
         Set<String> excludeClass = PackageUtil.scanClassNameToSet(exclude);
         for (String name : baseClass) {
             if (!excludeClass.contains(name)) {
+                logger.debug(name);
                 handle(name);
             }
         }

@@ -15,4 +15,15 @@ public class ProjectTree {
         byteCodeAdvice.advice(basePackage1.orElse(new String[0]),exclude1.orElse(new String[0]));
     }
 
+    /**
+     * 项目中依赖了Devtool热部署插件，必须调用此方法
+     * @param basePackage
+     * @param exclude
+     */
+    public static void makeHaveDevtool(String[] basePackage,String[] exclude) {
+        if (!Thread.currentThread().getName().equals("main")){
+            make(basePackage,exclude);
+        }
+    }
+
 }

@@ -22,7 +22,7 @@ public class MethodNodeServiceImpl implements MethodNodeService {
         //根据方法签名查找是否已存在该方法
         List<MethodNode> methodId = methodNodeDao.findAllByMethodId(node.getMethodId());
         //不存在直接保存,若存在调用链不相同也保存
-        if (methodId == null || !ServiceUtil.analyzeList(node, methodId)) {
+        if (methodId == null || methodId.size()==0|| !ServiceUtil.analyzeList(node, methodId)) {
             methodNodeDao.save(node);
         }
     }
