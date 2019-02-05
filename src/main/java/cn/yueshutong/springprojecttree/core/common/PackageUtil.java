@@ -41,14 +41,27 @@ public class PackageUtil {
     }
 
 
+    /**
+     * 如果是包、是类
+     * @param s
+     * @return
+     */
     private static String[] scanOneClass(String s) {
+        //如果是包
         if (s.endsWith("*")){
             return ClassHelper.getClzFromPkg(s).toArray(new String[0]);
 //            return scanManyClasss(s);
         }
+        //如果是类
         return new String[]{s};
     }
 
+    /**
+     * 无法获取jar包内的class文件，所以废弃
+     * @param s
+     * @return
+     */
+    @Deprecated
     private static String[] scanManyClasss(String s) {
         //去掉*,作为包名前缀
         final String prefix = s.substring(0, s.length() - 1);

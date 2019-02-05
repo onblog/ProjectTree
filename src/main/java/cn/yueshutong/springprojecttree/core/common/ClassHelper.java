@@ -10,6 +10,9 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
+/**
+ * 从网上随便住找的一个类（自己改了改）
+ */
 public class ClassHelper {
 
     /**
@@ -140,11 +143,7 @@ public class ClassHelper {
         }
     }
 
-    /**
-     *    加载类
-     * @param fullClzName 类全名
-     * @return
-     */
+
     private static Class<?> loadClass(String fullClzName) {
         System.out.println(fullClzName);
         try {

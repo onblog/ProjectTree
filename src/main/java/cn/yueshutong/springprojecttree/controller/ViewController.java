@@ -46,8 +46,8 @@ public class ViewController {
 
     @RequestMapping("/json/projecttree/{methodId}")
     @ResponseBody
-    public MethodNode getAll(@PathVariable String methodId){
-        return methodNodeService.findAllByMethodId(methodId);
+    public MethodNode getAll(@PathVariable Long methodId){
+        return methodNodeService.findAllById(methodId);
     }
 
 }

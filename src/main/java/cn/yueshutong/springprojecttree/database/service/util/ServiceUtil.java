@@ -36,4 +36,13 @@ public class ServiceUtil {
         return nodeStr.equals(idNodeStr);
     }
 
+    public static boolean analyzeList(MethodNode node, List<MethodNode> nodeId) {
+        for (MethodNode methodNode: nodeId){
+            if (analyze(node,methodNode)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

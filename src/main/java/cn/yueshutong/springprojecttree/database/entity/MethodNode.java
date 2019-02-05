@@ -4,6 +4,7 @@ import cn.yueshutong.springprojecttree.core.common.CodeUtil;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "method_node")
-public class MethodNode {
+public class MethodNode implements Serializable {
     @Id
     @GeneratedValue
     private Long id;

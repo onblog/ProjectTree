@@ -20,9 +20,9 @@ public class MethodNodeServiceImpl implements MethodNodeService {
     @Override
     public void saveNotRedo(MethodNode node) {
         //根据方法签名查找是否已存在该方法
-        MethodNode methodId = methodNodeDao.findAllByMethodId(node.getMethodId());
+        List<MethodNode> methodId = methodNodeDao.findAllByMethodId(node.getMethodId());
         //不存在直接保存,若存在调用链不相同也保存
-        if (methodId == null || !ServiceUtil.analyze(node, methodId)) {
+        if (methodId == null || !ServiceUtil.analyzeList(node, methodId)) {
             methodNodeDao.save(node);
         }
     }
@@ -33,8 +33,8 @@ public class MethodNodeServiceImpl implements MethodNodeService {
     }
 
     @Override
-    public MethodNode findAllByMethodId(String methodId) {
-        return methodNodeDao.findAllByMethodId(methodId);
+    public MethodNode findAllById(Long id) {
+        return methodNodeDao.findAllById(id);
     }
 
 }

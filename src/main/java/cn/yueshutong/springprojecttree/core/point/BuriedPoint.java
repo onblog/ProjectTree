@@ -60,7 +60,7 @@ public class BuriedPoint {
     }
 
     /**
-     * pop进（线程）栈
+     * pop出（线程）栈
      * @param identify
      * @param threadId
      */
