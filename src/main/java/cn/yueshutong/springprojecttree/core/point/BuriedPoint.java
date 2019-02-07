@@ -1,8 +1,10 @@
 package cn.yueshutong.springprojecttree.core.point;
 
 import cn.yueshutong.springprojecttree.config.ApplicationContextHelper;
+import cn.yueshutong.springprojecttree.core.around.util.AroundMethodUtil;
 import cn.yueshutong.springprojecttree.database.entity.MethodNode;
 import cn.yueshutong.springprojecttree.database.service.MethodNodeService;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,11 +26,12 @@ public class BuriedPoint {
     /*
      调用前置方法
      */
-    public static void before(String methodId, String className, String methodName, String[] parameterTypes, String[] annotations, String returnType, long threadId, Date startTime, int identify, String superclass, String[] interfaces) {
+    public static void before(ProceedingJoinPoint pjp, int identify) {
+        long threadId = Thread.currentThread().getId();
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                MethodNode methodNode = new MethodNode(methodId, className, methodName, parameterTypes, annotations, returnType, threadId, startTime, identify, superclass, interfaces);
+                MethodNode methodNode = AroundMethodUtil.getMethodNode(pjp, identify,threadId);
                 pushMap(methodNode);
             }
         });
@@ -37,11 +40,12 @@ public class BuriedPoint {
     /*
     调用后置方法
      */
-    public static void after(int identify, long threadId) {
+    public static void after(int identify,String returnType) {
+        long threadId = Thread.currentThread().getId();
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                popMap(identify, threadId);
+                popMap(identify, threadId, returnType);
             }
         });
     }
@@ -62,11 +66,11 @@ public class BuriedPoint {
 
     /**
      * pop出（线程）栈
-     *
-     * @param identify
+     *  @param identify
      * @param threadId
+     * @param returnType
      */
-    private static void popMap(int identify, long threadId) {
+    private static void popMap(int identify, long threadId, String returnType) {
         Stack<MethodNode> stack = map.get(String.valueOf(threadId));
         if (stack == null || stack.isEmpty()) {
             return;
@@ -76,6 +80,7 @@ public class BuriedPoint {
             methodNode = stack.pop();
         }
         methodNode.setEndTime(new Date());
+        methodNode.setReturnType(returnType);
         setMembership(stack, methodNode);
     }
 
@@ -95,6 +100,8 @@ public class BuriedPoint {
             list.add(methodNode);
             node.setMethodNodes(list);
             stack.push(node);
+        }else {
+            methodNode.setFirst(true);
         }
         save(methodNode);
     }
@@ -108,6 +115,7 @@ public class BuriedPoint {
         try {
             MethodNodeService methodNodeService = ApplicationContextHelper.popBean(MethodNodeService.class);
             methodNodeService.saveNotRedo(methodNode);
+            Thread.sleep(100);
         } catch (Exception e) {
             logger.error("请检查是否开启@EnableProjectTree注解?");
             e.printStackTrace();

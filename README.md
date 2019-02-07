@@ -1,4 +1,3 @@
-# Spring Project Tree
 
 ![](./picture/220619.png)
 
@@ -10,7 +9,7 @@
 
 我在加入新公司后，就遇到了悲催的情况。而且在一个多月时间里，我依旧没有熟悉项目细节。于是，我就诞生了做一款可视化流程分析插件的想法！帮助更多像我一样刚进公司对接手的项目摸不着头脑的新人快速熟悉业务流程！
 
-# 一、下载使用
+## 下载使用
 
 项目暂时没有加入Maven中央仓库，所以还需要你clone或download到本地。
 
@@ -30,64 +29,60 @@ mvn install
 </dependency>
 ```
 
-## 1.1 Spring Boot安装插件
+### Spring Boot安装
 
-如果你的项目是Spring Boot，那么使用会非常简单，只需要两步！
+如果你的项目是Spring Boot，那么使用会非常简单，只需要两步。
 
 **第一步**：
 
-在SpingBootApplication启动类注解`@EnableProjectTree`开启。
+在SpingBootApplication启动类注解`@EnableProjectTree`开启功能
 
 **第二步**：
 
-在main函数里首先运行`ProjectTree.make()`方法，这个方法的传入的参数有两个，第一个是要进行方法监控的类，书写类似import，也就是说，要么是一个类的全限定名，要么是 * 通配符结尾的形式，完整代码如下：
+在main函数里首先运行`ProjectTree.make()`方法，参数为[pointcut](https://www.baidu.com/baidu?isource=infinity&iname=baidu&itype=web&tn=98012088_9_dg&ch=7&ie=utf-8&wd=%40pointcut%20%E8%A1%A8%E8%BE%BE%E5%BC%8F)表达式，完整代码如下：
 
 ```
 @SpringBootApplication
-@EnableProjectTree //第一步：注入Spring Bean
+@EnableProjectTree //1
 public class SpringbootApplication {
 
     public static void main(String[] args) {
-        ProjectTree.make(new String[]{"com.example.springboot.demo.*"}
-        ,new String[]{"com.example.springboot.demo.entity.MyEntity"});//第二步：参数1是要进行方法监控的类，参照import形式，参数2是要排除监控的类
+        ProjectTree.make("execution(* cn.yueshutong.springprojecttree..*(..))");//2
         SpringApplication.run(SpringbootApplication.class, args);
     }
 
 }
 ```
 
-注：参数2的作用是排除如Entity类等易出错且无意义的类。
+注：重构后的Project Tree不止增加了对分布式接口的监控，还增加了pointcut表示式。
 
-## 1.2 Spring安装插件
-
-Spring和Spring Boot安装上的不同只有第一步的注解了，在Spring项目中，可以在Xml配置文件增加对`cn.yueshutong.springprojecttree`包的自动扫描即可。
-
-## 1.3 访问网页
+### 访问ProjectTree
 
 启动你的项目，首先访问你项目的某个接口，使其执行被监控的方法。然后访问`localhost:8080/projecttree`查看网页。
 
-#### 其它接口
+#### 接口说明
 
 | 接口                         | 说明                 |
 | ---------------------------- | -------------------- |
+| /projecttree                 | 返回完整调用链视图     |
+| /projecttree/all             | 返回全部方法视图     |
 | /json/projecttree            | JSON形式的返回结果   |
-| /json/projecttree/{methodId} | 对某一方法的分析结果 |
+| /json/projecttree/{methodId} | 对某一方法的JSON结果 |
 
-## 1.4 注意事项
+## 注意事项
 
-1.使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
+使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
 
-2.如果同时使用 spring-boot-devtools 进行热部署,必须调用makeHaveDevtool方法，而不是make。
+若遇到Jpa Dao层接口注入失败，Entity扫描失败这类问题，需要在你的启动类中使用下面两个注解：
 
-3.出现Bug一般是一些特殊类与本框架的冲突，排除这部分类即可。
+```
+@EntityScan(basePackages = "cn.yueshutong.springprojecttree.database.entity")
+@EnableJpaRepositories(basePackages = "cn.yueshutong.springprojecttree.database.dao")
+```
 
-# 二、源码分析
+## 源码介绍
 
-## 2.1 如何减少代码侵入？
-
-使用上通过注解开启+方法调用的形式，代码侵入性低。
-
-## 2.2 如何降低对主流程的性能消耗？
+如何降低对主流程的性能消耗？
 
 使用单例线程池实现异步非阻塞模型，降低对主流程的性能影响。
 
@@ -97,11 +92,11 @@ Spring和Spring Boot安装上的不同只有第一步的注解了，在Spring项
 
 基于内存的内嵌数据库实现数据的快速读写，这里不用担心数据过大问题，本插件基于**方法调用链分析**进行选择性保存，理论上说，从接口开始，有多少流程分支，就有多少条数据记录。占用内存极小。
 
-## 2.3 如何实现方法调用分析？
+如何实现方法调用分析？
 
 基于栈数据结构设计算法。
 
-# 三、关于作者
+## 关于作者
 
 博客：[http://www.yueshutong.cn](http://www.yueshutong.cn)
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -28,6 +29,15 @@ public class ViewController {
      * @return
      */
     @RequestMapping(value = "/projecttree",method = RequestMethod.GET)
+    public String getViewAll(ModelMap modelMap){
+        List<MethodNode> nodes = methodNodeService.findAll();
+        if (nodes!=null) {
+            nodes = nodes.stream().filter(MethodNode::isFirst).collect(Collectors.toList());
+        }
+        modelMap.addAttribute("nodes",nodes);
+        return "projecttree";
+    }
+    @RequestMapping(value = "/projecttree/all",method = RequestMethod.GET)
     public String getView(ModelMap modelMap){
         List<MethodNode> nodes = methodNodeService.findAll();
         modelMap.addAttribute("nodes",nodes);

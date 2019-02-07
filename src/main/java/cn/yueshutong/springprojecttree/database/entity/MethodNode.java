@@ -1,6 +1,5 @@
 package cn.yueshutong.springprojecttree.database.entity;
 
-import cn.yueshutong.springprojecttree.core.common.CodeUtil;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +18,7 @@ public class MethodNode implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+    private boolean first;
     private String methodId;
     private String className;
     private String methodName;
@@ -26,34 +26,35 @@ public class MethodNode implements Serializable {
     private String superclass;
     private String[] interfaces;
     private String[] parameterTypes;
-    private String[] annotations;
+    private String modifier;
     private String returnType;
     private Long threadId;
     private Date startTime;
     private Date endTime;
     private Long runTime;
     private Integer identify;
-    @ElementCollection(fetch = FetchType.EAGER)//定义基本类型或可嵌入类的实例集合
-    @OrderColumn(name = "position")//如果使用的是List，你需要多定义一个字段维护集合顺序
+    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER) //一对多为Lazy，多对一为Eager
+    @JoinColumn(name="cid") //name=定义外键在本表的字段名 rCN=关联外键对象的哪个字段
     private List<MethodNode> methodNodes;
 
     public MethodNode() {
 
     }
 
-    public MethodNode(String methodId,String className, String methodName, String[] parameterTypes, String[] annotations,
+    public MethodNode(String methodId,String className, String methodName, String[] parameterTypes, String modifier,
                       String returnType, long threadId, Date startTime, int identify,String superclass,String[] interfaces) {
+        this.id = -1l;
         this.methodId = methodId;
         this.className = className;
         this.methodName = methodName;
-        this.parameterTypes = CodeUtil.arrayNotNull(parameterTypes);
-        this.annotations = CodeUtil.arrayNotNull(annotations);
+        this.parameterTypes = parameterTypes;
+        this.modifier = modifier;
         this.returnType = returnType;
         this.startTime = startTime;
         this.threadId = threadId;
         this.identify = identify;
         this.superclass =superclass;
-        this.interfaces = CodeUtil.arrayNotNull(interfaces);
+        this.interfaces = interfaces;
     }
 
 
