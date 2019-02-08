@@ -1,4 +1,4 @@
-package cn.yueshutong.springprojecttree.config.processs.annotation;
+package cn.yueshutong.springprojecttree.config.annotation;
 
 import java.lang.annotation.*;
 

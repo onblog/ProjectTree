@@ -1,6 +1,6 @@
-package cn.yueshutong.springprojecttree.config.processs.processor;
+package cn.yueshutong.springprojecttree.config.processor;
 
-import cn.yueshutong.springprojecttree.config.processs.annotation.EnableProjectTree;
+import cn.yueshutong.springprojecttree.config.annotation.EnableProjectTree;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
