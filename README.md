@@ -7,7 +7,7 @@
 
 很快就要深入项目做开发了，怎么办呢？
 
-我在加入新公司后，就遇到了悲催的情况。而且在一段时间里，我依旧没有熟悉项目细节。于是，我就诞生了做一款可视化流程分析插件的想法！帮助更多新人快速熟悉业务。
+我在加入新公司后，就遇到了悲催的情况。于是，我就做了这款可视化流程分析插件！帮助更多入职新人快速熟悉业务。
 
 演示网址：[http://116.85.23.6:8521/projecttree](http://116.85.23.6:8521/projecttree)
 
@@ -27,7 +27,7 @@ mvn install
 <dependency>
     <groupId>cn.yueshutong</groupId>
     <artifactId>spring-project-tree</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.x-SNAPSHOT</version>
 </dependency>
 ```
 
