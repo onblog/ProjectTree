@@ -7,6 +7,7 @@ import java.util.Optional;
 /**
  * Create by yster@foxmail.com 2019/2/7 0007 14:27
  */
+@Deprecated
 public class ProjectTree {
 
     public static void make(String pointcut){

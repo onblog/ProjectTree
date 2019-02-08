@@ -33,23 +33,16 @@ mvn install
 
 ### Spring Boot安装
 
-如果你的项目是Spring Boot，那么使用会非常简单，只需要两步。
+如果你的项目是Spring Boot，那么使用会非常简单，只需要一个注解即可。
 
-**第一步**：
-
-在SpingBootApplication启动类注解`@EnableProjectTree`开启功能
-
-**第二步**：
-
-在main函数里首先运行`ProjectTree.make()`方法，参数为[pointcut](https://www.baidu.com/baidu?isource=infinity&iname=baidu&itype=web&tn=98012088_9_dg&ch=7&ie=utf-8&wd=%40pointcut%20%E8%A1%A8%E8%BE%BE%E5%BC%8F)表达式，完整代码如下：
+@EnableProjectTree(value = "")注解参数为[pointcut](https://www.baidu.com/baidu?isource=infinity&iname=baidu&itype=web&tn=98012088_9_dg&ch=7&ie=utf-8&wd=%40pointcut%20%E8%A1%A8%E8%BE%BE%E5%BC%8F)表达式，完整代码如下：
 
 ```
 @SpringBootApplication
-@EnableProjectTree //1
+@EnableProjectTree("execution(* com.example.springboot.demo..*(..))")
 public class SpringbootApplication {
 
     public static void main(String[] args) {
-        ProjectTree.make("execution(* cn.yueshutong.springprojecttree..*(..))");//2
         SpringApplication.run(SpringbootApplication.class, args);
     }
 
@@ -75,12 +68,8 @@ public class SpringbootApplication {
 
 使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
 
-若遇到Jpa Dao层接口注入失败，Entity扫描失败这类问题，需要在你的启动类中使用下面两个注解：
+若你的项目使用Jpa并且遇到Dao层接口注入失败，Entity扫描失败，可以考虑使用@EntityScan和@EnableJpaRepositories注解。
 
-```
-@EntityScan(basePackages = "cn.yueshutong.springprojecttree.database.entity")
-@EnableJpaRepositories(basePackages = "cn.yueshutong.springprojecttree.database.dao")
-```
 
 ## 源码介绍
 
