@@ -1,4 +1,4 @@
-package cn.yueshutong.springprojecttree.config.aspect;
+package cn.yueshutong.springprojecttree.config.processor.aspect;
 
 import cn.yueshutong.springprojecttree.core.around.AroundMethod;
 import org.aspectj.lang.ProceedingJoinPoint;
