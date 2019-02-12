@@ -115,9 +115,8 @@ public class BuriedPoint {
         try {
             MethodNodeService methodNodeService = ApplicationContextHelper.popBean(MethodNodeService.class);
             methodNodeService.saveNotRedo(methodNode);
-            Thread.sleep(100);
         } catch (Exception e) {
-            logger.error("请检查是否开启@EnableProjectTree注解?");
+            logger.error("methodNodeService保存方法节点失败");
             e.printStackTrace();
         }
     }
