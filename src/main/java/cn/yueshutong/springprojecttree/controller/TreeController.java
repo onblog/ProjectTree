@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * Create by yster@foxmail.com 2019/1/31 0031 19:51
  */
 @Controller
-public class ViewController {
+public class TreeController {
 
     @Autowired
     private MethodNodeService methodNodeService;

@@ -1,16 +1,17 @@
 var text = "";
+
 function f(data) {
     var name = data.methodName;
     var value = data.fullName;
     var children = data.methodNodes;
-    if (text.length==0) {
-        text += "<li><span class=\"open\"><i class=\"icon-folder-open\"></i>" + name + "</span><i>"+value+"</i>";
-    } else if (children.length<1) {
-        text += "<li><span class=\"leaf\"><i class=\"icon-leaf\"></i>" + name + "</span><i>"+value+"</i>";
-    }else {
-        text += "<li><span class=\"sign\"><i class=\"icon-minus-sign\"></i>" + name + "</span><i>"+value+"</i>";
+    if (isEmpty(text)) {
+        text += "<li><span class=\"open\"><i class=\"icon-folder-open\"></i>" + name + "</span><i>" + value + "</i>";
+    } else if (!isEmpty(children) && children.length < 1) {
+        text += "<li><span class=\"leaf\"><i class=\"icon-leaf\"></i>" + name + "</span><i>" + value + "</i>";
+    } else {
+        text += "<li><span class=\"sign\"><i class=\"icon-minus-sign\"></i>" + name + "</span><i>" + value + "</i>";
     }
-    if (children.length>=1) {
+    if (!isEmpty(children) && children.length >= 1) {
         text += "<ul>";
         for (var i = 0; i < children.length; i++) {
             f(children[i]);
@@ -20,13 +21,27 @@ function f(data) {
     text += "</li>"
 }
 
+function isEmpty(obj) {
+// 检验 undefined 和 null
+    if (!obj && obj !== 0 && obj !== '') {
+        return true;
+    }
+    if (Array.prototype.isPrototypeOf(obj) && obj.length === 0) {
+        return true;
+    }
+    if (Object.prototype.isPrototypeOf(obj) && Object.keys(obj).length === 0) {
+        return true;
+    }
+    return false;
+}
+
 $.ajaxSettings.async = false;
 $(".tree").each(function () {
     var that = $(this);
-    $.get('/json/projecttree/'+that.attr("id"), function (data) {
+    $.get('/json/projecttree/' + that.attr("id"), function (data) {
         f(data)
-        that.html("<ul>"+text+"</ul>")
-        text="";
+        that.html("<ul>" + text + "</ul>")
+        text = "";
     });
 });
 
