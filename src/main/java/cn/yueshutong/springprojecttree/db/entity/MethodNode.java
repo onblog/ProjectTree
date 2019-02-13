@@ -1,6 +1,5 @@
-package cn.yueshutong.springprojecttree.database.entity;
+package cn.yueshutong.springprojecttree.db.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -9,11 +8,7 @@ import java.util.List;
  * 方法信息
  * Create by yster@foxmail.com 2019/1/31 0031 22:15
  */
-@Entity
-@Table(name = "method_node")
 public class MethodNode implements Serializable {
-    @Id
-    @GeneratedValue
     private Long id;
     private boolean first;
     private String methodId;
@@ -30,8 +25,6 @@ public class MethodNode implements Serializable {
     private Date endTime;
     private Long runTime;
     private Integer identify;
-    @OneToMany(cascade={CascadeType.ALL}, fetch=FetchType.EAGER) //一对多为Lazy，多对一为Eager
-    @JoinColumn(name="cid") //name=定义外键在本表的字段名 rCN=关联外键对象的哪个字段
     private List<MethodNode> methodNodes;
 
     public MethodNode() {

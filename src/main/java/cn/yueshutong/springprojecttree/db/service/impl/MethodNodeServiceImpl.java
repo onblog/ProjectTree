@@ -1,9 +1,9 @@
-package cn.yueshutong.springprojecttree.database.service.impl;
+package cn.yueshutong.springprojecttree.db.service.impl;
 
-import cn.yueshutong.springprojecttree.database.dao.MethodNodeDao;
-import cn.yueshutong.springprojecttree.database.entity.MethodNode;
-import cn.yueshutong.springprojecttree.database.service.MethodNodeService;
-import cn.yueshutong.springprojecttree.database.service.util.ServiceUtil;
+import cn.yueshutong.springprojecttree.db.dao.MethodNodeDao;
+import cn.yueshutong.springprojecttree.db.entity.MethodNode;
+import cn.yueshutong.springprojecttree.db.service.MethodNodeService;
+import cn.yueshutong.springprojecttree.db.service.util.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +18,12 @@ public class MethodNodeServiceImpl implements MethodNodeService {
     private MethodNodeDao methodNodeDao;
 
     @Override
-    public void saveNotRedo(MethodNode node) {
+    public void saveNotRedo(MethodNode methodNode) {
         //根据方法签名查找是否已存在该方法
-        List<MethodNode> methodId = methodNodeDao.findAllByMethodId(node.getMethodId());
+        List<MethodNode> methodList = methodNodeDao.findAllByMethodId(methodNode.getMethodId());
         //不存在直接保存,若存在调用链不相同也保存
-        if (methodId == null || methodId.size()==0|| !ServiceUtil.analyzeList(node, methodId)) {
-            methodNodeDao.save(node);
+        if (methodList == null || methodList.size()==0|| !ServiceUtil.analyzeList(methodNode, methodList)) {
+            methodNodeDao.save(methodNode);
         }
     }
 

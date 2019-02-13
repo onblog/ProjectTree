@@ -1,7 +1,7 @@
 package cn.yueshutong.springprojecttree.controller;
 
-import cn.yueshutong.springprojecttree.database.entity.MethodNode;
-import cn.yueshutong.springprojecttree.database.service.MethodNodeService;
+import cn.yueshutong.springprojecttree.db.entity.MethodNode;
+import cn.yueshutong.springprojecttree.db.service.MethodNodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

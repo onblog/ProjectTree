@@ -1,6 +1,6 @@
-package cn.yueshutong.springprojecttree.database.service;
+package cn.yueshutong.springprojecttree.db.service;
 
-import cn.yueshutong.springprojecttree.database.entity.MethodNode;
+import cn.yueshutong.springprojecttree.db.entity.MethodNode;
 
 import java.util.List;
 

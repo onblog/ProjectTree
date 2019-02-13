@@ -12,12 +12,12 @@ public class AroundMethod {
     private static Logger logger = LoggerFactory.getLogger(AroundMethod.class);
 
     public static void playBeforeMethod(ProceedingJoinPoint pjp, int identify) {
-        logger.debug(pjp.getSignature().getDeclaringTypeName()+" "+pjp.getSignature().getName());
+        logger.debug("AroundMethodBefore "+pjp.getSignature().getDeclaringTypeName()+" "+pjp.getSignature().getName());
         BuriedPoint.before(pjp,identify);
     }
 
     public static void playAfterMethod(ProceedingJoinPoint pjp, int identify, Object obj) {
-        logger.debug(pjp.getSignature().getDeclaringTypeName()+" "+pjp.getSignature().getName());
+        logger.debug("AroundMethodAfter "+pjp.getSignature().getDeclaringTypeName()+" "+pjp.getSignature().getName());
         BuriedPoint.after(identify,obj!=null?obj.getClass().getName():null);
     }
 

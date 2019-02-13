@@ -2,8 +2,8 @@ package cn.yueshutong.springprojecttree.core.point;
 
 import cn.yueshutong.springprojecttree.config.ApplicationContextHelper;
 import cn.yueshutong.springprojecttree.core.around.util.AroundMethodUtil;
-import cn.yueshutong.springprojecttree.database.entity.MethodNode;
-import cn.yueshutong.springprojecttree.database.service.MethodNodeService;
+import cn.yueshutong.springprojecttree.db.entity.MethodNode;
+import cn.yueshutong.springprojecttree.db.service.MethodNodeService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -114,9 +114,9 @@ public class BuriedPoint {
     private static void save(MethodNode methodNode) {
         try {
             MethodNodeService methodNodeService = ApplicationContextHelper.popBean(MethodNodeService.class);
+            assert methodNodeService != null;
             methodNodeService.saveNotRedo(methodNode);
         } catch (Exception e) {
-            logger.error("methodNodeService保存方法节点失败");
             e.printStackTrace();
         }
     }

@@ -1,6 +1,6 @@
 package cn.yueshutong.springprojecttree.core.around.util;
 
-import cn.yueshutong.springprojecttree.database.entity.MethodNode;
+import cn.yueshutong.springprojecttree.db.entity.MethodNode;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 import java.lang.reflect.Modifier;

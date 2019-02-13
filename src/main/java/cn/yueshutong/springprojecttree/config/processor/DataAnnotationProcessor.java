@@ -43,7 +43,6 @@ public class DataAnnotationProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        messager.printMessage(Diagnostic.Kind.NOTE,"-----Proejct Tree Start");
         try {
             // 返回被注释的节点
             Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(EnableProjectTree.class);
@@ -72,17 +71,14 @@ public class DataAnnotationProcessor extends AbstractProcessor {
             // 手动编译
             compile(sourceFile.toUri().getPath());
         } catch (IOException e) {
-            messager.printMessage(Diagnostic.Kind.ERROR,e.getMessage());
+            messager.printMessage(Diagnostic.Kind.ERROR,"Project Tree 处理失败");
         }
-        messager.printMessage(Diagnostic.Kind.NOTE,"-----Proejct Tree End");
         return true;
     }
 
     private void createSourceFile(List<String> set, Writer writer) throws IOException {
         writer.write("package "+set.get(1)+";\n" +
-                "import org.springframework.boot.autoconfigure.domain.EntityScan;\n" +
                 "import org.springframework.context.annotation.ComponentScan;\n" +
-                "import org.springframework.data.jpa.repository.config.EnableJpaRepositories;\n"+
                 "import cn.yueshutong.springprojecttree.core.around.AroundMethod;\n" +
                 "import org.aspectj.lang.ProceedingJoinPoint;\n" +
                 "import org.aspectj.lang.annotation.Around;\n" +
@@ -93,8 +89,6 @@ public class DataAnnotationProcessor extends AbstractProcessor {
                 "import java.util.Random;\n" +
                 "\n" +
                 "@ComponentScan(basePackages = \"cn.yueshutong.springprojecttree\")\n" +
-                "@EntityScan(basePackages = \"cn.yueshutong.springprojecttree.database.entity\")\n" +
-                "@EnableJpaRepositories(basePackages = \"cn.yueshutong.springprojecttree.database.dao\")\n"+
                 "@Component\n" +
                 "@Aspect\n" +
                 "public class ProjectTreeAspect {\n" +
