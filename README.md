@@ -11,6 +11,8 @@
 
 演示网址：[http://116.85.23.6:8521/projecttree](http://116.85.23.6:8521/projecttree)
 
+示范工程：https://gitee.com/zyzpp/Spring-Project-Tree-Demo
+
 ## 下载使用
 
 项目暂时没有加入Maven中央仓库，所以还需要你clone或download到本地。
