@@ -24,7 +24,7 @@ mvn install
 
 以后使用时，只需要导入依赖
 
-```
+```xml
 <dependency>
     <groupId>cn.yueshutong</groupId>
     <artifactId>spring-project-tree</artifactId>
@@ -38,7 +38,7 @@ mvn install
 
 @EnableProjectTree(value = "")注解参数为[pointcut](https://www.baidu.com/baidu?isource=infinity&iname=baidu&itype=web&tn=98012088_9_dg&ch=7&ie=utf-8&wd=%40pointcut%20%E8%A1%A8%E8%BE%BE%E5%BC%8F)表达式，完整代码如下：
 
-```
+```java
 @SpringBootApplication
 @EnableProjectTree("execution(* com.example.springboot.demo..*(..))")
 public class SpringbootApplication {
