@@ -77,6 +77,9 @@ public class BuriedPoint {
         }
         MethodNode methodNode = stack.pop();
         while (methodNode.getIdentify() != identify) {
+            if (stack.isEmpty()){
+                return;
+            }
             methodNode = stack.pop();
         }
         methodNode.setEndTime(new Date());

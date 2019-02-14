@@ -3,18 +3,16 @@ package cn.yueshutong.springprojecttree.core.around.util;
 import cn.yueshutong.springprojecttree.db.entity.MethodNode;
 import org.aspectj.lang.ProceedingJoinPoint;
 
+import javax.validation.constraints.Null;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Create by yster@foxmail.com 2019/2/6 0006 23:34
  */
 public class AroundMethodUtil {
 
-    public static MethodNode getMethodNode(ProceedingJoinPoint pjp, int identify,long threadId) {
+    public static MethodNode getMethodNode(ProceedingJoinPoint pjp, int identify, long threadId) {
         String className = pjp.getSignature().getDeclaringTypeName();
         String methodName = pjp.getSignature().getName();
         String methodId = getMethodId(pjp);
@@ -47,19 +45,21 @@ public class AroundMethodUtil {
 
     /**
      * 获取参数类型数组
+     *
      * @param pjp
      * @return
      */
     public static String[] getParameters(ProceedingJoinPoint pjp) {
         List<String> parameterTypes = new ArrayList<>();
         for (Object object : pjp.getArgs()) {
-            parameterTypes.add(object.getClass().getName());
+            parameterTypes.add(Optional.ofNullable(object).map(s -> s.getClass().getName()).orElse("null"));
         }
         return parameterTypes.toArray(new String[0]);
     }
 
     /**
      * 获取MethodId方法签名
+     *
      * @param pjp
      * @return
      */
@@ -72,7 +72,7 @@ public class AroundMethodUtil {
         methodId.append(methodName);
         for (Object object : pjp.getArgs()) {
             methodId.append("x");
-            methodId.append(object.getClass().getName());
+            methodId.append(Optional.ofNullable(object).map(s -> s.getClass().getName()).orElse("null"));
         }
         return methodId.toString();
     }
