@@ -114,8 +114,7 @@ public class BuriedPoint {
     private static void save(MethodNode methodNode) {
         try {
             MethodNodeService methodNodeService = ApplicationContextHelper.popBean(MethodNodeService.class);
-            assert methodNodeService != null;
-            methodNodeService.saveNotRedo(methodNode);
+            Optional.ofNullable(methodNodeService).map(s -> s.saveNotRedo(methodNode));
         } catch (Exception e) {
             e.printStackTrace();
         }

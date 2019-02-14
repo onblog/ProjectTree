@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface MethodNodeService {
 
-    void saveNotRedo(MethodNode node);
+    boolean saveNotRedo(MethodNode node);
 
     List<MethodNode> findAll();
 
