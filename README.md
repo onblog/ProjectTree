@@ -64,14 +64,14 @@ public class SpringbootApplication {
 | ---------------------------- | -------------------- |
 | /projecttree                 | 返回完整调用链视图     |
 | /projecttree/all             | 返回全部方法视图     |
-| /json/projecttree            | JSON形式的返回结果   |
-| /json/projecttree/{methodId} | 对某一方法的JSON结果 |
+| /projecttree/json            | JSON形式的返回结果   |
+| /projecttree/{methodId}      | 对某一方法的JSON结果 |
 
 ## 注意事项
 
 使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
 
-若你的项目使用Jpa并且遇到Dao层接口注入失败，Entity扫描失败，可以考虑使用@EntityScan和@EnableJpaRepositories注解。
+*若你的项目使用Jpa并且遇到Dao层接口注入失败，Entity扫描失败，可以考虑使用@EntityScan和@EnableJpaRepositories注解。*
 
 
 ## 源码亮点
