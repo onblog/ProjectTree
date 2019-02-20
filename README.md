@@ -71,7 +71,7 @@ public class SpringbootApplication {
 
 使用Shiro、Spring Securit等安全框架时，需要注意对此URL的权限控制。
 
-*若你的项目使用Jpa并且遇到Dao层接口注入失败，Entity扫描失败，可以考虑使用@EntityScan和@EnableJpaRepositories注解。*
+另外，方法调用链分析并不会监控自身对自身的方法调用，因为this.method()并不是调用的代理对象的method()方法。
 
 
 ## 源码亮点
