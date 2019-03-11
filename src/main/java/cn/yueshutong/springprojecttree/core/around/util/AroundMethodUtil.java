@@ -40,7 +40,7 @@ public class AroundMethodUtil {
 
     public static String getSuperclass(ProceedingJoinPoint pjp) {
         Class superclass = pjp.getSignature().getDeclaringType().getSuperclass();
-        return superclass != null ? superclass.getName() : "superclass null";
+        return superclass != null ? superclass.getName() : " ";
     }
 
     /**

@@ -48,13 +48,13 @@ public class TreeController {
      * 返回JSON格式的分析结果
      * @return
      */
-    @RequestMapping("/json/projecttree")
+    @RequestMapping("/projecttree/json")
     @ResponseBody
     public List<MethodNode> getAll(){
         return methodNodeService.findAll();
     }
 
-    @RequestMapping("/json/projecttree/{methodId}")
+    @RequestMapping("/projecttree/{methodId}")
     @ResponseBody
     public MethodNode getAll(@PathVariable Long methodId){
         return methodNodeService.findAllById(methodId);
