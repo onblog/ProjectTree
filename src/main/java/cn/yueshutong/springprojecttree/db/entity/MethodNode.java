@@ -33,7 +33,7 @@ public class MethodNode implements Serializable {
 
     public MethodNode(String methodId,String className, String methodName, String[] parameterTypes, String modifier,
                       String returnType, long threadId, Date startTime, int identify,String superclass,String[] interfaces) {
-        this.id = -1l;
+        this.id = -1L;
         this.methodId = methodId;
         this.className = className;
         this.methodName = methodName;

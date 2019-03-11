@@ -19,7 +19,8 @@ public class MethodDaoImpl implements MethodNodeDao {
 
     @Override
     public MethodNode findAllById(Long id) {
-        return methodNodeList.stream().filter(m -> m.getId().equals(id)).collect(Collectors.toList()).get(0);
+        List<MethodNode> nodes = methodNodeList.stream().filter(m -> m.getId().equals(id)).collect(Collectors.toList());
+        return nodes.size() != 0 ? nodes.get(0) : null;
     }
 
     @Override
