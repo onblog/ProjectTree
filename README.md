@@ -1,4 +1,3 @@
-
 ![](./picture/220619.png)
 
 很多新人进入一家新公司后，最头疼的就是如何快速了解公司的业务和项目架构。
@@ -13,28 +12,19 @@
 
 示范工程：[https://gitee.com/zyzpp/Spring-Project-Tree-Demo](https://gitee.com/zyzpp/Spring-Project-Tree-Demo) (版本可能落后)
 
-## 下载使用
+## Maven依赖
 
-项目暂时没有加入Maven中央仓库，所以还需要你clone或download到本地。
-
-在本地计算机进入项目的pom.xml文件所在目录，打开命令行（CMD）,执行install命令安装到本地。
-
-```
-mvn install
-```
-*这里有一个小技巧，你可以手动修改pom.xml的spring-boot版本使它和你当前工程版本保持一致*
-
-以后使用时，只需要导入依赖
+直接在pom.xml引入依赖！
 
 ```xml
 <dependency>
-    <groupId>cn.yueshutong</groupId>
-    <artifactId>spring-project-tree</artifactId>
-    <version>0.0.x-SNAPSHOT</version>
+  <groupId>cn.yueshutong</groupId>
+  <artifactId>spring-project-tree</artifactId>
+  <version>0.0.5.RELEASE</version>
 </dependency>
 ```
 
-### Spring Boot安装
+### Spring Boot 项目
 
 如果你的项目是Spring Boot，那么使用会非常简单，只需要一个注解即可。
 
@@ -52,7 +42,7 @@ public class SpringbootApplication {
 }
 ```
 
-注：重构后的Project Tree不止增加了对分布式接口的监控，还增加了pointcut表示式。
+Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表示式。
 
 ### 访问ProjectTree
 
