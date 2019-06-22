@@ -12,7 +12,7 @@
 
     <groupId>cn.yueshutong</groupId>
     <artifactId>spring-project-tree</artifactId>
-    <version>0.0.5.RELEASE</version>
+    <version>1.0.0.RELEASE</version>
 
     <name>Spring Project Tree</name>
     <url>https://github.com/yueshutong/Spring-Project-Tree</url>
@@ -57,10 +57,6 @@
     <build>
         <plugins>
             <!--作为依赖，所以不使用Spring方式打包-->
-            <!--<plugin>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
