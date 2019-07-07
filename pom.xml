@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>cn.yueshutong</groupId>
-    <artifactId>spring-project-tree</artifactId>
+    <artifactId>tree-spring-boot-starter</artifactId>
     <version>1.0.0.RELEASE</version>
 
     <name>Spring Project Tree</name>
@@ -80,28 +80,12 @@
 
     <!--以下是发布到Maven中央仓库用到的配置-->
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <scm>
         <tag>master</tag>
         <url>https://github.com/yueshutong/Spring-Project-Tree.git</url>
         <connection>scm:git:git://github.com/yueshutong/Spring-Project-Tree.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/yueshutong/Spring-Project-Tree.git</developerConnection>
     </scm>
-
-    <developers>
-        <developer>
-            <name>YueShuTong</name>
-            <email>yster@foxmail.com</email>
-            <url>http://www.yueshutong.cn</url>
-        </developer>
-    </developers>
 
     <distributionManagement>
         <repository>
@@ -114,10 +98,32 @@
         </snapshotRepository>
     </distributionManagement>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>YueShuTong</name>
+            <email>yster@foxmail.com</email>
+            <url>http://www.yueshutong.cn</url>
+        </developer>
+    </developers>
+
     <profiles>
         <profile>
             <!-- -P release -->
             <id>release</id>
+            <repositories>
+                <repository>
+                    <id>releases_maven</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+                </repository>
+            </repositories>
             <build>
                 <plugins>
                     <!-- Source -->
@@ -145,11 +151,17 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <additionalJOptions>
+                                <additionalJOption>-Xdoclint:none</additionalJOption>
+                            </additionalJOptions>
+                        </configuration>
                     </plugin>
                     <!-- GPG -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
                         <executions>
                             <execution>
                                 <phase>verify</phase>

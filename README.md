@@ -17,7 +17,7 @@
 ```xml
 <dependency>
   <groupId>cn.yueshutong</groupId>
-  <artifactId>spring-project-tree</artifactId>
+  <artifactId>tree-spring-boot-starter</artifactId>
   <version>1.0.0.RELEASE</version>
 </dependency>
 ```
