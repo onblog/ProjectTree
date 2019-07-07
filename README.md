@@ -18,7 +18,7 @@
 <dependency>
   <groupId>cn.yueshutong</groupId>
   <artifactId>spring-project-tree</artifactId>
-  <version>0.0.5.RELEASE</version>
+  <version>1.0.0.RELEASE</version>
 </dependency>
 ```
 

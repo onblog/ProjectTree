@@ -1,4 +1,4 @@
-package cn.yueshutong.springprojecttree.config.processor.aspect;
+package cn.yueshutong.springprojecttree.config.processor;
 
 import cn.yueshutong.springprojecttree.core.around.AroundMethod;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -9,7 +9,6 @@ import java.util.Random;
 @Deprecated
 //@Component
 //@Aspect
-//@ComponentScan(basePackages = "cn.yueshutong.springprojecttree")
 public class ProjectTreeAspect {
 
     //声明切点

@@ -45,9 +45,6 @@ public class AroundMethodUtil {
 
     /**
      * 获取参数类型数组
-     *
-     * @param pjp
-     * @return
      */
     public static String[] getParameters(ProceedingJoinPoint pjp) {
         List<String> parameterTypes = new ArrayList<>();
@@ -59,9 +56,6 @@ public class AroundMethodUtil {
 
     /**
      * 获取MethodId方法签名
-     *
-     * @param pjp
-     * @return
      */
     public static String getMethodId(ProceedingJoinPoint pjp) {
         String className = pjp.getSignature().getDeclaringTypeName();

@@ -12,9 +12,6 @@ public class ServiceUtil {
     /**
      * 分析调用链是否相同
      * 调用链情况相同返回True
-     * @param node
-     * @param nodeId
-     * @return
      */
     public static boolean analyze(MethodNode node, MethodNode nodeId) {
         List<MethodNode> nodes = node.getMethodNodes();

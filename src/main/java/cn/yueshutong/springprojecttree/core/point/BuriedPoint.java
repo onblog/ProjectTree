@@ -52,8 +52,6 @@ public class BuriedPoint {
 
     /**
      * push进（线程）栈
-     *
-     * @param methodNode
      */
     private static void pushMap(MethodNode methodNode) {
         Stack<MethodNode> stack = map.get(String.valueOf(methodNode.getThreadId()));
@@ -66,9 +64,6 @@ public class BuriedPoint {
 
     /**
      * pop出（线程）栈
-     *  @param identify
-     * @param threadId
-     * @param returnType
      */
     private static void popMap(int identify, long threadId, String returnType) {
         Stack<MethodNode> stack = map.get(String.valueOf(threadId));
@@ -89,9 +84,6 @@ public class BuriedPoint {
 
     /**
      * 利用栈实现建立节点的父子关系
-     *
-     * @param stack
-     * @param methodNode
      */
     private static void setMembership(Stack<MethodNode> stack, MethodNode methodNode) {
         if (!stack.isEmpty()) {
@@ -111,8 +103,6 @@ public class BuriedPoint {
 
     /**
      * 把节点保存到数据库
-     *
-     * @param methodNode
      */
     private static void save(MethodNode methodNode) {
         try {

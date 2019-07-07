@@ -88,12 +88,10 @@ public class DataAnnotationProcessor extends AbstractProcessor {
                 "\n" +
                 "import java.util.Random;\n" +
                 "\n" +
-                "@ComponentScan(basePackages = \"cn.yueshutong.springprojecttree\")\n" +
                 "@Component\n" +
                 "@Aspect\n" +
                 "public class ProjectTreeAspect {\n" +
                 "\n" +
-                "    //声明切点\n" +
                 "    @Pointcut(\""+set.get(0)+"\")\n" +
                 "    public void pointcut(){}\n" +
                 "\n" +

@@ -39,8 +39,8 @@ $.ajaxSettings.async = false;
 $(".tree").each(function () {
     var that = $(this);
     $.get('/projecttree/' + that.attr("id"), function (data) {
-        f(data)
-        that.html("<ul>" + text + "</ul>")
+        f(data);
+        that.html("<ul>" + text + "</ul>");
         text = "";
     });
 });

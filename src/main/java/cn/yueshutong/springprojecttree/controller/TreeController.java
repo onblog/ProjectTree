@@ -3,6 +3,8 @@ package cn.yueshutong.springprojecttree.controller;
 import cn.yueshutong.springprojecttree.db.entity.MethodNode;
 import cn.yueshutong.springprojecttree.db.service.MethodNodeService;
 import cn.yueshutong.springprojecttree.util.ReadClasspathFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,10 +27,10 @@ public class TreeController {
     @Autowired
     private MethodNodeService methodNodeService;
 
+    private Logger logger = LoggerFactory.getLogger(TreeController.class);
+
     /**
      * 返回HTML网页形式的分析结果
-     * @param modelMap
-     * @return
      */
     @RequestMapping(value = "/projecttree",method = RequestMethod.GET)
     public String getViewAll(ModelMap modelMap){
@@ -49,7 +51,6 @@ public class TreeController {
 
     /**
      * 返回JSON格式的分析结果
-     * @return
      */
     @RequestMapping("/projecttree/json")
     @ResponseBody
@@ -63,22 +64,5 @@ public class TreeController {
         return methodNodeService.findAllById(methodId);
     }
 
-    /**
-     * 解决静态资源不加载
-     * @param path
-     * @return
-     * @throws IOException
-     */
-    @ResponseBody
-    @RequestMapping(value = "view/{path}.js",produces = {"application/x-javascript; charset=UTF-8"})
-    public String view_js(@PathVariable String path) throws IOException {
-        return ReadClasspathFile.read("view/"+path+".js");
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "view/{path}.css",produces = {"text/css; charset=UTF-8"})
-    public String view_html(@PathVariable String path) throws IOException {
-        return ReadClasspathFile.read("view/"+path+".css");
-    }
 
 }

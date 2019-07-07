@@ -26,37 +26,30 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
-            <!--作为依赖，所以不使用Spring方式打包-->
+            <!--不指定编译会报错-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -112,11 +105,11 @@
 
     <distributionManagement>
         <repository>
-            <id>releases</id>
+            <id>releases_maven</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
+            <id>snapshots_maven</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
