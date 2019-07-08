@@ -24,14 +24,14 @@
 但前提是你已经引入如下依赖：
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
 ```
 
 ### Spring Boot Starter
@@ -56,7 +56,7 @@ Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表
 
 ### 访问ProjectTree
 
-启动你的项目，首先访问你项目的某个接口，使其执行被监控的方法。然后访问`localhost:8080/projecttree`查看网页。
+启动你的项目，首先访问你项目的某个接口，使其执行被监控的方法。然后访问`localhost:8080/tree/project.html`查看网页。
 
 #### 接口说明
 
