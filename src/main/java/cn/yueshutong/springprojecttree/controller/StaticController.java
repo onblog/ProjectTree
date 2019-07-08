@@ -5,10 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 @RestController
 public class StaticController {
@@ -25,13 +25,15 @@ public class StaticController {
             response.setContentType("application/javascript");
         }else if (uri.endsWith(".css")){
             response.setContentType("text/css");
-        }else if (uri.endsWith(".ttf")||uri.endsWith(".woff")){
-            response.setContentType("application/octet-stream");
-        }else {
-            String contentType = new MimetypesFileTypeMap().getContentType(uri);
-            response.setContentType(contentType);
+        }else if (uri.endsWith(".woff")){
+            response.setContentType("application/x-font-woff");
+        }else if (uri.endsWith(".ttf")){
+            response.setContentType("application/x-font-truetype");
+        }else if (uri.endsWith(".html")){
+            response.setContentType("text/html");
         }
-        response.getWriter().print(ReadClasspathFile.read(uri));
+        byte[] s = ReadClasspathFile.read(uri);
+        response.getOutputStream().write(Optional.ofNullable(s).orElse("404".getBytes()));
     }
 
 

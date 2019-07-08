@@ -8,7 +8,6 @@
 
 我在加入新公司后，就遇到了悲催的情况。于是，我就做了这款可视化流程分析插件！帮助更多入职新人快速熟悉业务。
 
-示范工程：[https://gitee.com/zyzpp/Spring-Project-Tree-Demo](https://gitee.com/zyzpp/Spring-Project-Tree-Demo)
 
 ## Maven依赖
 
@@ -22,7 +21,20 @@
 </dependency>
 ```
 
-### Spring Boot 项目
+但前提是你已经引入如下依赖：
+
+```xml
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+```
+
+### Spring Boot Starter
 
 如果你的项目是Spring Boot，那么使用会非常简单，只需要一个注解即可。
 
@@ -50,9 +62,9 @@ Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表
 
 | 接口                         | 说明                 |
 | ---------------------------- | -------------------- |
-| /projecttree                 | 返回完整调用链视图     |
-| /projecttree/all             | 返回全部方法视图     |
-| /projecttree/json            | JSON形式的返回结果   |
+| /tree/project.html         | 返回完整调用链视图     |
+| /tree/project.html?all=1    | 返回全部方法视图     |
+| /projecttree/all        | JSON形式的返回结果   |
 | /projecttree/{methodId}      | 对某一方法的JSON结果 |
 
 ## 注意事项
