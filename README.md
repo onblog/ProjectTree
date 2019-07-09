@@ -96,15 +96,21 @@ Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表
 
 通过ThreadId加Stack自定义数据结构“线程栈”实现线程隔离。
 
-## 关于作者
+## About
 
-博客：[http://www.yueshutong.cn](http://www.yueshutong.cn)
+Blog：<http://www.yueshutong.cn/>
 
-邮箱：yster@foxmail.com
+Email：[yster@foxmail.com](mailto:yster@foxmail.com)
 
-Github：[https://github.com/yueshutong/Spring-Project-Tree](https://github.com/yueshutong/Spring-Project-Tree)
+Github：<https://github.com/yueshutong/ProjectTree>
 
-Gitee：[https://gitee.com/zyzpp/Spring-Project-Tree](https://gitee.com/zyzpp/Spring-Project-Tree)
+Gitee：<https://gitee.com/zyzpp/ProjectTree>
 
 交流QQ群：781927207
+
+如果帮助到你了，请不吝赞赏！谢谢！
+
+<img src="http://ww3.sinaimg.cn/large/006tNc79ly1g43096t4oaj30tc0tc41y.jpg" width="300px" referrerpolicy="no-referrer">
+
+<img src="http://ww3.sinaimg.cn/large/006tNc79ly1g4rgr77f3ij308c0au74a.jpg" width="300px" referrerPolicy="no-referrer">
 
