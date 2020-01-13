@@ -98,18 +98,12 @@ Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表
 
 ## About
 
-Blog：<https://yueshutong.cnblogs.com/>
-
 Email：[yster@foxmail.com](mailto:yster@foxmail.com)
 
 Github：<https://github.com/yueshutong/ProjectTree>
-
-Gitee：<https://gitee.com/zyzpp/ProjectTree>
 
 交流QQ群：781927207
 
 如果帮助到你了，请不吝赞赏！谢谢！
 
-<img src="https://user-images.githubusercontent.com/31175877/67548917-af6d1600-f735-11e9-9807-351e6a2db269.png" width="300px" referrerpolicy="no-referrer">
-
-<img src="https://user-images.githubusercontent.com/31175877/67549023-e17e7800-f735-11e9-89d4-5ca7dac0486d.png" width="300px" referrerpolicy="no-referrer">
+<img src='https://i.loli.net/2020/01/13/pPoFNwT6fKCZQ2i.png' width="400px" />
