@@ -100,7 +100,7 @@ Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表
 
 Email：[yster@foxmail.com](mailto:yster@foxmail.com)
 
-Github：<https://github.com/yueshutong/ProjectTree>
+Github：<https://github.com/ystcode/ProjectTree>
 
 交流QQ群：781927207
 
