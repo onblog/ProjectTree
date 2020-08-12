@@ -1,1 +1,1 @@
-cn.yueshutong.springprojecttree.config.processor.DataAnnotationProcessor
+com.github.onblog.springprojecttree.config.processor.DataAnnotationProcessor

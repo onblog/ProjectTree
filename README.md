@@ -15,9 +15,9 @@
 
 ```xml
 <dependency>
-  <groupId>cn.yueshutong</groupId>
+  <groupId>com.github.onblog</groupId>
   <artifactId>tree-spring-boot-starter</artifactId>
-  <version>1.0.0.RELEASE</version>
+  <version>2.0.0.RELEASE</version>
 </dependency>
 ```
 
@@ -98,7 +98,7 @@ Project Tree不仅增加了对分布式接口的监控，还增加了pointcut表
 
 ## About
 
-Email：[yster@foxmail.com](mailto:yster@foxmail.com)
+Email：[codeblog@qq.com](mailto:codeblog@qq.com)
 
 如果帮助到你了，请不吝赞赏！谢谢！
 

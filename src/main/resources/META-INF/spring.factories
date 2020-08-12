@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.yueshutong.springprojecttree.ProjectTreeAutoConfiguration
+  com.github.onblog.springprojecttree.ProjectTreeAutoConfiguration
