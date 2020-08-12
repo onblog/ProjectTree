@@ -16,7 +16,7 @@
 ```xml
 <dependency>
   <groupId>com.github.onblog</groupId>
-  <artifactId>tree-spring-boot-starter</artifactId>
+  <artifactId>project-tree-spring-boot-starter</artifactId>
   <version>2.0.0.RELEASE</version>
 </dependency>
 ```
