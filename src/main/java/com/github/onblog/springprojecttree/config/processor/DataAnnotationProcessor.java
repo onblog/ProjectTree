@@ -79,7 +79,7 @@ public class DataAnnotationProcessor extends AbstractProcessor {
     private void createSourceFile(List<String> set, Writer writer) throws IOException {
         writer.write("package "+set.get(1)+";\n" +
                 "import org.springframework.context.annotation.ComponentScan;\n" +
-                "import cn.yueshutong.springprojecttree.core.around.AroundMethod;\n" +
+                "import com.github.onblog.springprojecttree.core.around.AroundMethod;\n" +
                 "import org.aspectj.lang.ProceedingJoinPoint;\n" +
                 "import org.aspectj.lang.annotation.Around;\n" +
                 "import org.aspectj.lang.annotation.Aspect;\n" +
